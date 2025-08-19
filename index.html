@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="container mx-auto bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800">
+<body class="container border-t-4 border-indigo-500 mx-auto bg-gradient-to-br from-slate-50 to-blue-50">
   <!-- Particle Background -->
   <div id="particles-js" class="fixed inset-0 z-0"></div>
 
@@ -52,10 +52,10 @@
     <div class="flex flex-col lg:flex-row gap-8 ">
       <!-- Left Sidebar (Personal Info) -->
       <aside
-        class="  sidebar lg:w-80  top-0 h-screen overflow-y-auto bg-gradient-to-b from-blue-900 to-blue-800 text-white glass shadow-2xl">
+        class="  lg:w-80   h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-red-900 to-blue-800 text-white glass shadow-2xl">
         <div class="p-6 ">
           <div class="profile-container relative group">
-            <img src="profile.jpeg" alt="Amjad Piash"
+            <img class="fade-in-up" src="profile.jpeg" alt="Amjad Piash"
               class="profile-img w-full rounded-2xl shadow-2xl transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-3xl" />
             <div
               class="absolute inset-0 bg-gradient-to-t from-blue-900/50 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -118,11 +118,11 @@
               <div class="skill-item">
                 <div class="flex justify-between mb-1">
                   <span class="text-sm">Time Management</span>
-                  <span class="text-sm text-blue-300">85%</span>
+                  <span class="text-sm text-blue-300">99%</span>
                 </div>
                 <div class="w-full bg-blue-800 rounded-full h-2">
                   <div class="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full skill-progress"
-                    data-width="85"></div>
+                    data-width="99"></div>
                 </div>
               </div>
             </div>
@@ -148,16 +148,19 @@
                 <div class="absolute w-3 h-3 bg-blue-400 rounded-full -left-2 top-1"></div>
                 <h3 class="font-semibold">Green University of Bangladesh (CSE)</h3>
                 <p class="text-blue-300">CGPA: 3.64</p>
+                <p  class="text-blue-300">Year : 2022-2025</p>
               </div>
               <div class="edu-item relative pl-6 border-l-2 border-blue-400">
                 <div class="absolute w-3 h-3 bg-blue-400 rounded-full -left-2 top-1"></div>
-                <h3 class="font-semibold">BAF Shaheen College</h3>
+                <h3 class="font-semibold">BAF Shaheen College,Dhaka</h3>
                 <p class="text-blue-300">GPA: 4.67</p>
+                <p class="text-blue-300">Year : 2018-2019</p>
               </div>
               <div class="edu-item relative pl-6 border-l-2 border-blue-400">
                 <div class="absolute w-3 h-3 bg-blue-400 rounded-full -left-2 top-1"></div>
                 <h3 class="font-semibold">Balughat High School</h3>
                 <p class="text-blue-300">GPA: 5.00</p>
+                <p class="text-blue-300">Year : 2016-2017</p>
               </div>
             </div>
           </div>
@@ -223,29 +226,38 @@
       <!-- Main Content -->
       <main class="flex-1 min-w-0 p-4 lg:p-8">
         <div class="max-w-4xl mx-auto">
-          <div class="text-center mb-8 pt-4 md:pt-8">
+          <div class="text-center mb-8 pt-4 md:pt-8 px-4">
             <!-- Desktop Name and Title - Hidden on mobile/tablet -->
             <div class="hidden lg:block">
               <h1
                 class="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2 sm:mb-3 typewriter">
                 Amjad Hossain Piash
               </h1>
-              <h3 class="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 fade-in-up mb-6 sm:mb-8">
+              <h3 class="text-base sm:text-lg md:text-xl text-gray-800 dark:text-gray-100 fade-in-up mb-6 sm:mb-8">
                 Student of CSE Department, Green University of Bangladesh
               </h3>
             </div>
-            <!-- Mobile/Tablet spacing adjustment -->
-            <div class="lg:hidden mb-6 sm:mb-8"></div>
+            <!-- Mobile/Tablet Name and Title - Show at top on mobile/tablet -->
+            <div class="lg:hidden">
+              <h1
+                class="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-2 typewriter">
+                Amjad Hossain Piash
+              </h1>
+              <h3 class="text-base sm:text-lg text-gray-800 dark:text-gray-100 fade-in-up mb-6">
+                Student of CSE Department, Green University of Bangladesh
+              </h3>
+            </div>
 
             <!-- Professional Experience moved here under name -->
             <div class="max-w-3xl mx-auto mb-8">
               <h2 class="text-2xl font-bold mb-4 flex items-center justify-center space-x-3">
                 <i class="fas fa-briefcase text-green-500"></i>
-                <span class="text-gray-600 dark:text-gray-400">Professional Experience</span>
+                <span class="text-gray-800 dark:text-gray-200">Professional Experience</span>
               </h2>
               <div class="space-y-4">
+                
                 <div
-                  class="experience-card bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  class="experience-card bg-white/75 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <h4 class="text-lg font-bold text-blue-600 mb-1">Classical Hometex, Dhaka Trade Fair</h4>
                   <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">Manager | Jan 2019</p>
                   <p class="text-sm text-gray-700 dark:text-gray-300">In the 2019 Dhaka Trade Fair, I held the position
@@ -360,25 +372,15 @@
                 <i class="fas fa-envelope text-red-500"></i>
                 <span class="text-gray-800 dark:text-gray-7700">Contact Me</span>
               </h2>
-              <form id="contactForm" class="space-y-4">
-                <div class="form-group">
-                  <input type="text" placeholder="Your Name" required
-                    class="w-full px-3 py-2 rounded-xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-sm" />
-                </div>
-                <div class="form-group">
-                  <input type="email" placeholder="Your Email" required
-                    class="w-full px-3 py-2 rounded-xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-sm" />
-                </div>
-                <div class="form-group">
-                  <textarea placeholder="Your Message" required rows="4"
-                    class="w-full px-3 py-2 rounded-xl bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 resize-none text-sm"></textarea>
-                </div>
-                <button type="submit"
-                  class="btn w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm">
-                  <i class="fas fa-paper-plane mr-2"></i>
-                  Send Message
-                </button>
-              </form>
+              <div class="text-center">
+                <p class="text-gray-600 dark:text-gray-400 mb-6">Feel free to reach out to me via email. Click the button below to open your email client.</p>
+                <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=hossainpiash933@gmail.com" 
+                  target="_blank"
+                  class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm">
+                  <i class="fas fa-envelope mr-2"></i>
+                  Send Email
+                </a>
+              </div>
             </div>
           </div>
 

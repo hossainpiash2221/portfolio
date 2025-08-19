@@ -308,7 +308,7 @@ body {
   .typewriter {
     white-space: normal;
     border-right: none;
-    animation: none;
+    /* animation: none; */
   }
 }
 
