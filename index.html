@@ -13,14 +13,32 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=UnifrakturCook:wght@700&display=swap"
+        rel="stylesheet">
     <style>
+        .londrina-shadow-regular {
+            font-family: "Londrina Shadow", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .unifrakturcook-bold {
+            font-family: "UnifrakturCook", cursive;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+
+
         :root {
             --primary: #4f46e5;
-            --primary-dark: #4338ca;
+            --primary-dark: #2215aa;
             --secondary: #7e22ce;
-            --accent: #06b6d4;
-            --light: #f8fafc;
-            --dark: #0f172a;
+            --accent: #ee0d0d;
+            --light: #fffdfd;
+            --dark: #250135;
         }
 
         body {
@@ -390,21 +408,21 @@
         /* Mobile dock */
         .mobile-dock {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
+            /* bottom: 0px; */
+            left: 70px;
             transform: translateX(-50%);
             display: flex;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            /* background: rgba(255, 255, 255, 0.8); */
+            /* backdrop-filter: blur(10px); */
             border-radius: 16px;
             padding: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); */
             z-index: 40;
             transition: all 0.3s ease;
         }
 
         .dark .mobile-dock {
-            background: rgba(15, 23, 42, 0.8);
+            /* background: rgba(15, 23, 42, 0.8); */
         }
 
         .dock-button {
@@ -412,7 +430,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 8px 16px;
+            padding: 2px 10px;
             border-radius: 12px;
             background: transparent;
             border: none;
@@ -420,9 +438,25 @@
             transition: all 0.2s ease;
         }
 
+        /* .dock-button.active {
+            background: rgba(233, 0, 31, 0.1);
+        } */
+
         .dock-button.active {
-            background: rgba(79, 70, 229, 0.1);
+            border-bottom: 2px solid rgba(233, 0, 109, 0.8);
         }
+
+        /* Active navigation styles */
+        nav a.active-nav {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+        }
+
+        #mobile-menu a.active-nav {
+            border-bottom: 2px solid #4f46e5;
+            color: #4f46e5;
+        }
+
 
         .dock-button i {
             font-size: 1.2rem;
@@ -434,8 +468,8 @@
             font-weight: 500;
         }
 
-        /* Mobile view classes */
-        @media (max-width: 767px) {
+        /* Mobile and medium view classes */
+        @media (max-width: 1023px) {
             .mobile-hide-sidebar .sidebar-container {
                 transform: translateX(-100%);
             }
@@ -444,7 +478,7 @@
                 transform: translateX(100%);
             }
 
-            /* New classes for full width display on mobile */
+            /* New classes for full width display on mobile and medium */
             .show-sidebar .sidebar-container {
                 transform: translateX(0);
                 width: 100% !important;
@@ -467,7 +501,8 @@
                 display: none;
             }
 
-            .sidebar-container, .main-container {
+            .sidebar-container,
+            .main-container {
                 transition: transform 0.3s ease;
             }
         }
@@ -481,7 +516,7 @@
             }
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1450px) {
             .mobile-dock {
                 display: none;
             }
@@ -489,7 +524,7 @@
     </style>
 </head>
 
-<body class="container border-t-4 border-indigo-500 mx-auto show-main">
+<body class=" border-t-4 border-indigo-500 mx-auto show-main">
     <!-- Loading Animation -->
     <!-- <div class="loader">
         <div class="loader-circle"></div>
@@ -514,15 +549,27 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-40 shadow-md">
-        <div class="container mx-auto px-4">
+    <nav
+        class="mt-1 fixed top-0 left-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-40 shadow-md rounded-full md:px-10">
+        <div class=" px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <span class="text-xl font-bold text-blue-600 slide-in-left">Amjad Piash</span>
+                    <span
+                        class="text-3xl  font-bold text-blue-600 slide-in-left hidden lg:block londrina-shadow-regular unifrakturcook-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Piash</span>
+                    <div class="mobile-dock lg:hidden">
+                        <button id="dock-sidebar" class="dock-button">
+                            <i class="fas fa-user-circle"></i>
+                            <span class="dock-label">Profile</span>
+                        </button>
+                        <button id="dock-main" class="dock-button active">
+                            <i class="fas fa-briefcase"></i>
+                            <span class="dock-label">Portfolio</span>
+                        </button>
+                    </div>
                 </div>
                 <div class="hidden md:flex space-x-8">
                     <a href="#about"
-                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors slide-in-bottom"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors slide-in-bottom "
                         style="animation-delay: 0.1s;">About</a>
                     <a href="#skills"
                         class="text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-colors slide-in-bottom"
@@ -590,7 +637,7 @@
         </div>
     </div>
 
-    <!-- Mobile Dock -->
+    <!-- Mobile Dock
     <div class="mobile-dock md:hidden">
         <button id="dock-sidebar" class="dock-button">
             <i class="fas fa-user-circle"></i>
@@ -600,12 +647,13 @@
             <i class="fas fa-briefcase"></i>
             <span class="dock-label">Portfolio</span>
         </button>
-    </div>
+    </div> -->
 
-    <div class="container relative z-10 pt-16">
+    <div class=" relative z-10 pt-16">
 
         <div class="flex">
-            <aside class="sidebar-container w-full md:w-1/3 lg:w-1/4 h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-red-900 to-blue-800 text-white glass shadow-2xl">
+            <aside
+                class="sidebar-container w-full md:w-1/3 lg:w-1/4 h-screen sticky top-0 overflow-y-auto bg-gradient-to-b from-red-900 to-blue-800 text-white glass shadow-2xl">
                 <div class="p-6">
                     <div class="contact mt-8 space-y-4">
                         <h2
@@ -632,13 +680,13 @@
                                 class="flex items-center space-x-2 hover:translate-x-2 transition-transform duration-300">
                                 <i class="fab fa-github text-blue-300"></i>
                                 <a href="https://github.com/hossainpiash2221" target="_blank"
-                                    class="hover:text-blue-300 transition-colors">github.com/hossainpiash2221</a>
+                                    class="">github.com/hossainpiash2221</a>
                             </p>
                             <p
-                                class="flex items-center space-x-2 hover:translate-x-2 transition-transform duration-300">
+                                class="flex  items-center space-x-2 hover:translate-x-2 transition-transform duration-300">
                                 <i class="fab fa-linkedin text-blue-300"></i>
                                 <a href="https://linkedin.com/in/amjad-hossain-piash-72905328a" target="_blank"
-                                    class="hover:text-blue-300 transition-colors">LinkedIn</a>
+                                    class="">LinkedIn</a>
                             </p>
                         </div>
                     </div>
@@ -685,16 +733,18 @@
                                     Listening</span></li>
                             <li class="flex items-center space-x-2"><i
                                     class="fas fa-check text-green-400"></i><span>Latex, MS
-                                    Word</span></li>
+                                    Office</span></li>
                             <li class="flex items-center space-x-2"><i
                                     class="fas fa-check text-green-400"></i><span>Photoshop
                                     (Basic)</span></li>
+                            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-400"></i><span>DSA
+                                    & OOP</span></li>
                             <li class="flex items-center space-x-2"><i class="fas fa-check text-green-400"></i><span>C,
                                     C++, Java,
-                                    Python</span></li>
+                                    Python, MySQL</span></li>
                             <li class="flex items-center space-x-2"><i
                                     class="fas fa-check text-green-400"></i><span>HTML, CSS,
-                                    JavaScript, React</span></li>
+                                    JavaScript, React, Wordpress</span></li>
                         </ul>
                     </div>
 
@@ -706,7 +756,7 @@
                             <div class="edu-item relative pl-6 border-l-2 border-blue-400">
                                 <div class="absolute w-3 h-3 bg-blue-400 rounded-full -left-2 top-1"></div>
                                 <h3 class="font-semibold">Green University of Bangladesh (CSE)</h3>
-                                <p class="text-blue-300">CGPA: 3.64</p>
+                                <p class="text-blue-300">CGPA: 3.56</p>
                                 <p class="text-blue-300">Year : 2022-2025</p>
                             </div>
                             <div class="edu-item relative pl-6 border-l-2 border-blue-400">
@@ -785,8 +835,7 @@
             </aside>
             <div class="main-container w-full md:w-2/3 lg:w-3/4">
                 <!-- Hero Section with About Me -->
-                <section id="about"
-                    class="min-h-screen flex flex-col md:flex-row items-center justify-center py-12 px-4">
+                <section class="min-h-screen flex flex-col md:flex-row items-center justify-center py-12 px-4">
                     <div class="w-full md:w-2/5 mb-8 md:mb-0 flex justify-center">
                         <div class="profile-container relative group">
                             <img src="profile.jpeg" alt="Amjad Piash"
@@ -799,43 +848,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="w-full md:w-3/5 md:pl-12">
+                    <div class="w-full md:w-3/5 md:pl-12 text-center md:text-left">
                         <h1
                             class="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 mb-4 typewriter">
-                            Amjad Hossain Piash
+                            <Span class="text-purple-600">Hi, I'm</Span><br>
+                            <span> Amjad Hossain Piash</span>
                         </h1>
-                        <h3 class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 mb-6 fade-in-up">
-                            Student of CSE Department, Green University of Bangladesh
+                        <h3 class="text-xl md:text-2xl  dark:text-white mb-6 fade-in-up">
+                            Frontend Developer
                         </h3>
-                        <div
-                            class="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg mb-8 hover-lift">
-                            <h2 class="text-2xl font-bold mb-4 flex items-center space-x-3">
-                                <i class="fas fa-user text-blue-500"></i>
-                                <span>About Me</span>
-                            </h2>
-                            <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                I am a CSE student at Green University of Bangladesh with 6+ years of tutoring
-                                experience. I have strong
-                                communication skills, a quick learning ability in tools and technology, and a good
-                                understanding of data
-                                structures, algorithms, and object-oriented programming (OOP). I am currently learning
-                                MERN Stack
-                                Development. I have received the Vice Chancellor's Award and the Dean's Award for
-                                academic performance,
-                                as well as the Vice Chancellor's Award for the best project in the university.
-                            </p>
-                        </div>
-                        <div class="flex flex-wrap gap-4">
+
+                        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
                             <a href="#contact"
-                                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 pulse-glow">
+                                class="inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg pulse-glow">
                                 Contact Me
                             </a>
                             <a href="resume.pdf"
-                                class="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
+                                class="border-2 border-blue-600 text-blue-600   font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105">
                                 Download Resume
                             </a>
                         </div>
                     </div>
+
                 </section>
 
                 <!-- Shape Divider -->
@@ -848,35 +882,132 @@
                     </svg>
                 </div>
 
+
                 <!-- Main Content -->
                 <main class="py-12 px-4">
                     <div class="max-w-6xl mx-auto">
+
+                        <section id="about">
+                            <div class=" dark:bg-slate-800/5  ">
+                                <h2 class="text-3xl font-bold mb-8 flex items-center space-x-3">
+                                    <i class="fas fa-user text-blue-500"></i>
+                                    <span>About Me</span>
+                                </h2>
+                                <p
+                                    class="mb-16 skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item text-center">
+                                    I am a CSE student at Green University of Bangladesh with 6+ years of tutoring
+                                    experience. I have strong
+                                    communication skills, a quick learning ability in tools and technology, and a good
+                                    understanding of data
+                                    structures, algorithms, and object-oriented programming (OOP). I am currently
+                                    learning
+                                    MERN Stack
+                                    Development. I have received the Vice Chancellor's Award and the Dean's Award for
+                                    academic performance,
+                                    as well as the Vice Chancellor's Award for the best project in the university.
+                                </p>
+                            </div>
+                        </section>
                         <!-- Technical Skills Section -->
+
                         <section id="skills" class="mb-16">
-                            <h2 class="text-3xl font-bold mb-8 flex items-center space-x-3">
-                                <i class="fas fa-code text-blue-500"></i>
-                                <span>Technical Skills</span>
-                            </h2>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div
-                                    class="skill-card bg-white/75 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
-                                    <h4 class="text-lg font-bold text-blue-600 mb-4">Programming Languages</h4>
-                                    <ul class="space-y-3">
-                                        <li class="flex items-center space-x-2">
-                                            <i class="fas fa-check text-green-400"></i>
-                                            <span>C, C++, Java, Python</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div
-                                    class="skill-card bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
-                                    <h4 class="text-lg font-bold text-blue-600 mb-4">Web Technologies</h4>
-                                    <ul class="space-y-3">
-                                        <li class="flex items-center space-x-2">
-                                            <i class="fas fa-check text-green-400"></i>
-                                            <span>HTML, CSS, TailwindCSS, JavaScript, React, Wordpress</span>
-                                        </li>
-                                    </ul>
+                            <div class="max-w-6xl mx-auto px-6 text-center">
+                                <h2 class="text-3xl font-bold mb-4">Tech Stack</h2>
+                                <p class=" dark:text-gray-400 mb-12">
+                                    Technologies and tools I use to bring ideas to life.
+                                </p>
+
+                                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+
+                                    <!-- HTML -->
+                                    <div
+                                        class="p-6 bg-orange-100 rounded-xl shadow transition transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                                            alt="HTML" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">HTML</h3>
+                                    </div>
+
+                                    <!-- CSS -->
+                                    <div
+                                        class="p-6 bg-blue-100 rounded-xl shadow transition transform hover:scale-105 hover:-rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                                            alt="CSS" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">CSS</h3>
+                                    </div>
+
+                                    <!-- Tailwind CSS -->
+                                    <div
+                                        class="p-6 bg-cyan-100 rounded-xl shadow transition transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                                        <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+                                            alt="TailwindCSS" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">Tailwind CSS</h3>
+                                    </div>
+
+                                    <!-- JavaScript -->
+                                    <div
+                                        class="p-6 bg-yellow-100 rounded-xl shadow transition transform hover:scale-105 hover:-rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                            alt="JavaScript" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">JavaScript</h3>
+                                    </div>
+
+                                    <!-- React -->
+                                    <div
+                                        class="p-6 bg-blue-100 rounded-xl shadow transition transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                            alt="React" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">React</h3>
+                                    </div>
+
+                                    <!-- WordPress -->
+                                    <div
+                                        class="p-6 bg-indigo-100 rounded-xl shadow transition transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg"
+                                            alt="WordPress" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">WordPress</h3>
+                                    </div>
+
+
+                                    <!-- MySQL -->
+                                    <div
+                                        class="p-6 bg-teal-100 rounded-xl shadow transition transform hover:scale-105 hover:-rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                                            alt="MySQL" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">MySQL</h3>
+                                    </div>
+
+                                    <!-- C -->
+                                    <div
+                                        class="p-6 bg-green-100 rounded-xl shadow transition transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+                                            alt="C" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">C</h3>
+                                    </div>
+
+                                    <!-- C++ -->
+                                    <div
+                                        class="p-6 bg-purple-100 rounded-xl shadow transition transform hover:scale-105 hover:-rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                                            alt="C++" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">C++</h3>
+                                    </div>
+
+                                    <!-- Python -->
+                                    <div
+                                        class="p-6 bg-green-200 rounded-xl shadow transition transform hover:scale-105 hover:rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                                            alt="Python" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">Python</h3>
+                                    </div>
+
+                                    <!-- Java -->
+                                    <div
+                                        class="p-6 bg-red-100 rounded-xl shadow transition transform hover:scale-105 hover:-rotate-2 hover:shadow-xl">
+                                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                            alt="Java" class="w-12 h-12 mx-auto mb-3" />
+                                        <h3 class="font-semibold text-gray-800">Java</h3>
+                                    </div>
+
                                 </div>
                             </div>
                         </section>
@@ -889,23 +1020,23 @@
                             </h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div
-                                    class="experience-card bg-white/75 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
-                                    <h4 class="text-lg font-bold text-blue-600 mb-2">Classical Hometex, Dhaka Trade Fair
+                                    class=" skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item ">
+                                    <h4 class="text-lg font-bold text-blue-600 mb-2 ">Classical Hometex, Dhaka Trade Fair
                                     </h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Manager | Jan 2019</p>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">In the 2019 Dhaka Trade Fair, I
+                                    <p class="text-sm  dark:text-gray-100 mb-2">Manager | Jan 2019</p>
+                                    <p class="text-sm ">In the 2019 Dhaka Trade Fair, I
                                         held the position
                                         of a manager at classical hometex. I supervised a team of 12 salesmen. There I
                                         learned how to
                                         communicate with different types of people.</p>
                                 </div>
                                 <div
-                                    class="experience-card bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
+                                    class="skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
                                     <h4 class="text-lg font-bold text-blue-600 mb-2">Tutoring Services, Dhaka Cantonment
                                     </h4>
-                                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Private Tutor | 2021–2024
+                                    <p class="text-sm  dark:text-gray-400 mb-2">Private Tutor | 2021–2024
                                     </p>
-                                    <p class="text-sm text-gray-700 dark:text-gray-300">For the past 6 years, I have
+                                    <p class="text-sm  dark:text-gray-300">For the past 6 years, I have
                                         been provided to
                                         school and college Students which help develop strong communication skills and
                                         patience.</p>
@@ -921,7 +1052,7 @@
                             </h2>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div
-                                    class="project-card group bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-lift stagger-item">
+                                    class="flex flex-col skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
                                     <div class="flex items-center justify-between mb-4">
                                         <h3 class="text-xl font-bold text-blue-600">Campus360 Solutions</h3>
                                         <div class="flex space-x-2">
@@ -931,26 +1062,27 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 dark:text-gray-400 mb-4">A web platform for managing
+                                    <p class="dark:text-gray-400 mb-4">A web platform for managing
                                         cafeteria orders and
                                         transport tracking in universities.</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">React</span>
-                                        <span
-                                            class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Node.js</span>
-                                        <span
-                                            class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">MongoDB</span>
+                                    <div class="flex flex-wrap gap-2 mb-4 flex-grow">
+                                        <div> <span
+                                                class="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">React</span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Node.js</span>
+                                            <span
+                                                class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">MongoDB</span>
+                                        </div>
                                     </div>
                                     <button
-                                        class="view-details-btn bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+                                        class="w-30 mx-auto view-details-btn border-2 border-blue-600 text-blue-600   font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105"
                                         data-project="campus360">
                                         View Details
                                     </button>
                                 </div>
 
                                 <div
-                                    class="project-card group bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-lift stagger-item">
+                                    class="flex flex-col skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
                                     <div class="flex items-center justify-between mb-4">
                                         <h3 class="text-xl font-bold text-blue-600">Blood Donating System</h3>
                                         <div class="flex space-x-2">
@@ -960,26 +1092,30 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 dark:text-gray-400 mb-4">Desktop app to manage donors and
+                                    <p class=" dark:text-gray-400 mb-4">Desktop app to manage donors and
                                         optimize search
                                         using graph algorithms. By this project user can see distance and path between
                                         doner and receiver.</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Java</span>
-                                        <span class="px-3 py-1 bg-red-100 text-red-800 text-sm rounded-full">C</span>
-                                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Graph
-                                            algorithms</span>
+                                    <div class="flex flex-wrap gap-2 mb-4 flex-grow">
+                                        <div>
+                                            <span
+                                                class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Java</span>
+                                            <span
+                                                class="px-3 py-1 bg-red-100 text-red-800 text-sm rounded-full">C</span>
+                                            <span
+                                                class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Graph
+                                                algorithms</span>
+                                        </div>
                                     </div>
                                     <button
-                                        class="view-details-btn bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+                                        class="w-30 mx-auto view-details-btn border-2 border-blue-600 text-blue-600   font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105"
                                         data-project="bloodDonation">
                                         View Details
                                     </button>
                                 </div>
 
                                 <div
-                                    class="project-card group bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-lift stagger-item">
+                                    class="flex flex-col skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
                                     <div class="flex items-center justify-between mb-4">
                                         <h3 class="text-xl font-bold text-blue-600">Product Service System</h3>
                                         <div class="flex space-x-2">
@@ -988,25 +1124,29 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 dark:text-gray-400 mb-4">Java-based product management
+                                    <p class=" dark:text-gray-400 mb-4">Java-based product management
                                         system using custom data structures and algorithms.</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Java</span>
-                                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Linked
-                                            List</span>
-                                        <span class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Graph
-                                            algorithms</span>
+                                    <div class="flex flex-wrap gap-2 mb-4 flex-grow">
+                                        <div>
+                                            <span
+                                                class="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full">Java</span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Linked
+                                                List</span>
+                                            <span
+                                                class="px-3 py-1 bg-purple-100 text-purple-800 text-sm rounded-full">Graph
+                                                algorithms</span>
+                                        </div>
                                     </div>
                                     <button
-                                        class="view-details-btn bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+                                        class="w-30 mx-auto view-details-btn border-2 border-blue-600 text-blue-600   font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105"
                                         data-project="productService">
                                         View Details
                                     </button>
                                 </div>
 
                                 <div
-                                    class="project-card group bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover-lift stagger-item">
+                                    class="flex flex-col skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
                                     <div class="flex items-center justify-between mb-4">
                                         <h3 class="text-xl font-bold text-blue-600">File Operating System</h3>
                                         <div class="flex space-x-2">
@@ -1015,16 +1155,18 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <p class="text-gray-600 dark:text-gray-400 mb-4">Linux-based file operating system
+                                    <p class=" dark:text-gray-400 mb-4">Linux-based file operating system
                                         with shell scripting capabilities.</p>
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span
-                                            class="px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full">Linux</span>
-                                        <span
-                                            class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Shell</span>
+                                    <div class="flex flex-wrap gap-2 mb-4 flex-grow justify-center">
+                                        <div class="">
+                                            <span
+                                                class="px-3 py-1 bg-gray-100 text-gray-800 text-sm rounded-full">Linux</span>
+                                            <span
+                                                class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Shell</span>
+                                        </div>
                                     </div>
                                     <button
-                                        class="view-details-btn bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition-colors"
+                                        class="w-30 mx-auto view-details-btn border-2 border-blue-600 text-blue-600   font-bold py-2 px-4 rounded-xl transition-all duration-300 transform hover:scale-105"
                                         data-project="fileSystem">
                                         View Details
                                     </button>
@@ -1039,8 +1181,8 @@
                                 <span>Contact Me</span>
                             </h2>
                             <div
-                                class="bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover-lift">
-                                <p class="text-gray-600 dark:text-gray-400 mb-6 text-center">Feel free to reach out to
+                                class="skill-card bg-white/5 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 hover-lift stagger-item">
+                                <p class=" dark:text-gray-400 mb-6 text-center">Feel free to reach out to
                                     me via email. Click the button below to open your email client.</p>
                                 <div class="text-center">
                                     <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=hossainpiash933@gmail.com"
@@ -1061,8 +1203,8 @@
 
     <footer class="relative z-10 bg-gradient-to-r from-blue-900 to-purple-900 text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-lg">© 2025 Amjad Hossain Piash — Web Developer.</p>
-            <div class="mt-4 flex justify-center space-x-6">
+            <p class="text-lg">© 2025 Amjad Hossain Piash — Frontend Developer.</p>
+            <div class="mt-20 flex justify-center space-x-6">
                 <a href="https://github.com/hossainpiash2221" target="_blank"
                     class="text-2xl hover:text-blue-300 transition-colors float-animation"
                     style="animation-delay: 0.1s;">
@@ -1200,7 +1342,7 @@
             const dockMain = document.getElementById('dock-main');
             const sidebarContainer = document.querySelector('.sidebar-container');
             const mainContainer = document.querySelector('.main-container');
-            
+
             // Function to update dock button states
             function updateDockButtons(activeButton) {
                 if (activeButton === 'sidebar') {
@@ -1219,18 +1361,18 @@
                     document.body.classList.remove('mobile-hide-sidebar');
                 }
             }
-            
+
             // Event listeners for dock buttons
             dockSidebar.addEventListener('click', () => {
                 updateDockButtons('sidebar');
             });
-            
+
             dockMain.addEventListener('click', () => {
                 updateDockButtons('main');
             });
-            
+
             // Initialize with main (portfolio) visible on mobile
-            if (window.innerWidth < 768) {
+            if (window.innerWidth < 1024) {
                 updateDockButtons('main');
             }
 
@@ -1394,6 +1536,76 @@
                 document.querySelector('.bg-element-2').style.transform = `translateY(${-scrollY * 0.05}px)`;
                 document.querySelector('.bg-element-3').style.transform = `translateY(${scrollY * 0.03}px)`;
             });
+
+            // Active navigation functionality
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu a[href^="#"]');
+
+            // Function to remove active class from all links
+            function removeActiveClass() {
+                navLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+                mobileNavLinks.forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+            }
+
+            // Function to add active class to clicked link
+            function addActiveClass(link) {
+                link.classList.add('active-nav');
+            }
+
+            // Add click event listeners to desktop nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    removeActiveClass();
+                    addActiveClass(this);
+                });
+            });
+
+            // Add click event listeners to mobile nav links
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    removeActiveClass();
+                    addActiveClass(this);
+                    // Close mobile menu after clicking
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Set active link based on scroll position
+            function setActiveLinkOnScroll() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        removeActiveClass();
+
+                        // Find and activate corresponding nav link
+                        const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+                        const activeMobileLink = document.querySelector(`#mobile-menu a[href="#${sectionId}"]`);
+
+                        if (activeLink) {
+                            addActiveClass(activeLink);
+                        }
+                        if (activeMobileLink) {
+                            addActiveClass(activeMobileLink);
+                        }
+                    }
+                });
+            }
+
+            // Add scroll event listener for active link detection
+            window.addEventListener('scroll', setActiveLinkOnScroll);
+
+            // Set initial active link on page load
+            setActiveLinkOnScroll();
         });
     </script>
 </body>
